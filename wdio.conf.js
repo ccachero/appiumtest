@@ -44,12 +44,12 @@ exports.config = {
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
         platformName: "Android",
-        platformVersion: "7.1.1",
-        deviceName: "Test Device",
-        app: "F:/Programming stuff/appiumtest2/Freelancer.apk",
+        platformVersion: "8.1.0",
+        deviceName: "Pixel 2 API 27",
+        app: "C:/Users/ccachero/nodeTests/appiumtest2/testing-challenge-android.apk",
         automationName: "UiAutomator2",
-        appPackage: "com.freelancer.android.messenger",
-        appWaitActivity: "com.freelancer.android.auth.AuthActivity"
+        appPackage: "org.goodwall.app",
+        appWaitActivity: "org.goodwall.app.rx.domain.authenticator.activity.AuthenticatorActivity"
     }],
     //
     // ===================
@@ -123,6 +123,15 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
+    reporters: ['spec', 'junit'],
+    reporterOptions: {
+        junit: {
+            outputDir: './tests/test_logs/'
+        },
+        spec: {
+            outputDir: './tests/test_logs/'
+        }
+    },
     framework: 'jasmine',
     //
     // Test reporter for stdout.

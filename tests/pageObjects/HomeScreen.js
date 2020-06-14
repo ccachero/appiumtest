@@ -1,22 +1,28 @@
+const Resources = require('../resources/HomeScreenResources.js').HomeScreenResources;
+var resources = new Resources();
 
 class HomeScreen{
-	get denyPermission() { return browser.element('#permission_deny_button'); }
-	get homeToolBar() { return browser.element('#toolbar'); }
-	get bottomNav() { return browser.element('#bottomNavigation'); }
-	get messagesTab() { return browser.element('#tabLayout'); }
-	get messages() { return browser.element('#viewPager'); }
 
+	//check if elements in the home screen are visible
 	homeScreenHasLoaded(){
-		this.denyPermission.click();
-		if(this.homeToolBar.waitForVisible(10000) &&
-		this.bottomNav.waitForVisible(10000) && 
-		this.messagesTab.waitForVisible(10000) && 
-		this.messages.waitForVisible(10000) ){
-			return true;
+		// browser.sleep(10000);
+		if(resources.discoverTab().waitForExist(20000) &&
+		resources.opportunitiesTab().waitForExist(20000) && 
+		resources.messagingTab().waitForExist(20000) &&
+		resources.userProfileTab().waitForExist(20000)){
+		return true;
 		}
 		else{
 			return false;
 		}
+	}
+	//navigate to YOU tab
+	navigateToUserProfile(){
+		resources.userProfileTab().click();
+	}
+	//navigate to Messages tab
+	navigateToMessages(){
+		resources.messagingTab().click();
 	}
 }
 

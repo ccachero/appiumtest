@@ -1,22 +1,27 @@
+const Resources = require('../resources/SplashScreenResources.js').SplashScreenResources;
+var resources = new Resources();
 
 class SplashScreen{
-	get loginButton() { return browser.element('#login'); }
-	get signUpButton() { return browser.element('#signUpButton'); }
 
+	//check if elements in the splash screen are visible
 	splashScreenHasLoaded(){
-		if(this.loginButton.waitForVisible(10000) &&
-		this.signUpButton.waitForVisible(10000)){
+		if(resources.loginButton().waitForVisible(10000) &&
+		resources.signUpButtonFB().waitForVisible(10000) && resources.signUpButtonPhone().waitForVisible(10000)){
 			return true;
 		}
 		else{
 			return false;
 		}
 	}
+
+	//click login to navigate to login page
 	navigateToLogin(){
-		this.loginButton.click();
+		resources.loginButton().click();
 	}
+
+	//click sign up button to sign up
 	navigateToSignUp(){
-		this.signUpButton.click();
+		resources.signUpButton().click();
 	}
 }
 

@@ -1,24 +1,38 @@
+const Resources = require('../resources/LoginScreenResources.js').LoginScreenResources;
+var resources = new Resources();
 
 class LoginScreen{
-	get continueWithEmail() { return browser.element('#continueButton'); }
-	get usernameTextField() { return browser.element('//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.EditText'); }
-	get passwordTextField() { return browser.element('//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.EditText'); }
-    get loginButton() { return browser.element('#getStartedButton'); }
 
     login(username, password){
-    	this.continueWithEmail.click();
     	if(this.loginScreenHasLoaded()){
-    	this.usernameTextField.setValue(username);
-    	this.passwordTextField.setValue(password);
-   		this.loginButton.click();}
+    	resources.emailOrPhoneTextField().setValue(username);
+    	resources.passwordTextField().setValue(password);
+   		resources.loginButton().click();}
     }
 
+    //check if elements on the login screen are visible
     loginScreenHasLoaded(){
-    	this.usernameTextField.waitForVisible(10000);
-    	this.passwordTextField.waitForVisible(10000);
-    	this.loginButton.waitForVisible(10000);
+    	if(resources.emailOrPhoneTextField().waitForVisible(10000) &&
+    	resources.passwordTextField().waitForVisible(10000) &&
+    	resources.loginButton().waitForVisible(10000)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
-    	return true;
+    finishLogIn(){
+        //workaround because after logging in and going to the home screen, appium can't detect any elements
+        //until the user clicks/taps something on the screen
+        if(resources.loginButton().waitForVisible(30000, true)){
+            setTimeout(function(){ 
+                browser.touchAction({
+                action: 'tap', x: 700, y:500
+                })
+            }, 5000);
+            return true;
+         }
     }
 }
 

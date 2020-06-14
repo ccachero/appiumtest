@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Test_Add_Education" timestamp="2019-09-26T01:44:04" time="74.481" tests="7" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0d49841ccf0035e34f075d9f1233abe3"/>
+      <property name="suiteName" value="Test Add Education"/>
+      <property name="capabilities" value="pixel2api27.android.8_1_0.testing-challenge-android_apk"/>
+      <property name="file" value=".\tests\specs\AddEducationTest.js"/>
+    </properties>
+    <testcase classname="pixel2api27.android.8_1_0.testing-challenge-android_apk.Test_Add_Education" name="Given_User_Is_In_Splash_Screen" time="2.17"/>
+    <testcase classname="pixel2api27.android.8_1_0.testing-challenge-android_apk.Test_Add_Education" name="When_User_Navigates_To_Login_Screen" time="0.418"/>
+    <testcase classname="pixel2api27.android.8_1_0.testing-challenge-android_apk.Test_Add_Education" name="When_User_Enters_Credentials_and_Logins" time="22.533"/>
+    <testcase classname="pixel2api27.android.8_1_0.testing-challenge-android_apk.Test_Add_Education" name="When_User_Navigates_to_User_Profile" time="0.685"/>
+    <testcase classname="pixel2api27.android.8_1_0.testing-challenge-android_apk.Test_Add_Education" name="Then_User_Profile_Should_Be_Loaded_Successfully" time="3.69"/>
+    <testcase classname="pixel2api27.android.8_1_0.testing-challenge-android_apk.Test_Add_Education" name="When_User_Adds_new_Education" time="43.96"/>
+    <testcase classname="pixel2api27.android.8_1_0.testing-challenge-android_apk.Test_Add_Education" name="Then_New_Education_Should_be_seen_on_Profile_page" time="0.457"/>
+  </testsuite>
+</testsuites>
